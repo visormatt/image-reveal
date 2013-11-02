@@ -1,0 +1,26 @@
+{
+  "name": "Hide_and_Reveal",
+  "version": "0.0.0",
+  "description": "A responsive before and after javascript image slider",
+  "main": "GruntFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/visormatt/image-reveal.git"
+  },
+  "keywords": [
+    "javascript",
+    "responsive",
+    "html5"
+  ],
+  "author": "Matthew Shelley",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/visormatt/image-reveal/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
