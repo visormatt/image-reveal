@@ -3,9 +3,10 @@
 [DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
 
 
-## Plugins Used
+## Plugins & Tools Used
 * [Modernizr](http://modernizr.com/): is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 * [EventShim](https://github.com/jwmcpeak/EventShim): EventShim adds support for addEventListener(), removeEventListener(), and standard Event object properties to IE8's event model.
+* [Gruntjs](http://gruntjs.com/): In one word: automation.
 
 
 ## Browser and Device Support
