@@ -21,6 +21,8 @@
     "url": "https://github.com/visormatt/image-reveal/issues"
   },
   "devDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-jshint": "~0.7.1"
   }
 }
