@@ -9,17 +9,12 @@
 
 	<div class="container">
 		<h1>Hide and Reveal</h1>
-		<div id="beyond-slider" class="" style="margin-top: 10px;">
 
+		<div id="beyond-slider" class="" style="margin-top: 10px;">
 			<!-- Before is what we hide the overflow on creating the reveal effect -->
 			<div id="before" class="img before" draggable="true">
 				<div id="before-overlay" class="overlay"></div>
 				<img src="img/before.png" draggable="true">
-			</div>
-
-			<!-- This is the handle that does it -->
-			<div id="handle" class="responsive">
-				<a href="#" alt="asd" title="dar"></a>
 			</div>
 
 			<!-- After because IE doesn't support background size -->
@@ -27,12 +22,16 @@
 				<div id="after-overlay" class="overlay"></div>
 				<img src="img/after.png" draggable="false">
 			</div>
+
+			<!-- This is the handle that does it -->
+			<div id="handle" class="responsive">
+				<a href="#" alt="asd" title="dar"></a>
+			</div>
 		</div>
 
 		<p>So, I have seen a couple of these but decided to write my own... This is responsive and will soon be mobile optimized as well.</p>
 
 	</div>
-
 
 	<script type="text/javascript" src="js/modernizr.js"></script>
 	<script type="text/javascript" src="js/eventShim.js"></script>
