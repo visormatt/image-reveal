@@ -36,7 +36,6 @@ html h6 {
 #beyond-slider.css-animate .overlay,
 #beyond-slider.css-animate .before {
   /* We keep this in here to enable hardware accelation on iOS */
-
   -o-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);

@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 	 */
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
@@ -35,9 +36,24 @@ module.exports = function(grunt) {
 				files: ['js/*.js'],
 				tasks: ['jshint'],
 				// options: {
-				// 	nospawn: true,
+				//  nospawn: true,
 				// },
 			},
+		},
+
+		/**
+		 * Watch our files for updates
+		 */
+		less: {
+			development: {
+				options: {
+					// paths: ["css"]
+				},
+
+				files: {
+					"css/styles.css": "css/styles.less"
+				}
+			}
 		},
 
 		/**
@@ -67,6 +83,7 @@ module.exports = function(grunt) {
 	 */
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	/**
 	 * Default task(s).
