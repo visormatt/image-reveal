@@ -19,10 +19,8 @@ RevealSlider.prototype = {
 	 * Never go full...
 	 */
 	transparencyRange: {
-		'min': 0,
-		'max': 1,
-		// 'min': .15,
-		// 'max': .85,
+		'min': .15,
+		'max': .85,
 	},
 
 	/**
@@ -201,7 +199,7 @@ RevealSlider.prototype = {
 				me.slider.handle.style.left = end + '%';
 			} else {
 				// Use CSS transistions if available
-				if (Modernizr.csstransitions) {
+				if (typeof Modernizr !== 'undefined' && Modernizr.csstransitions) {
 					me.before.element.style.width = end + '%';
 					me.slider.handle.style.left = end + '%';
 					me._setOpacity(end);
