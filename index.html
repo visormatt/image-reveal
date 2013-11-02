@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Hide &amp; Reveal</title>
+	<link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container">
+		<h1>Hide and Reveal</h1>
+		<div id="beyond-slider" class="" style="margin-top: 10px;">
+
+			<!-- Before is what we hide the overflow on creating the reveal effect -->
+			<div id="before" class="img before" draggable="true">
+				<div id="before-overlay" class="overlay"></div>
+				<img src="img/before.png" draggable="true">
+			</div>
+
+			<!-- This is the handle that does it -->
+			<div id="handle" class="responsive">
+				<a href="#" alt="asd" title="dar"></a>
+			</div>
+
+			<!-- After because IE doesn't support background size -->
+			<div id="after" class="img after" draggable="false">
+				<div id="after-overlay" class="overlay"></div>
+				<img src="img/after.png" draggable="false">
+			</div>
+		</div>
+
+		<p>So, I have seen a couple of these but decided to write my own... This is responsive and will soon be mobile optimized as well.</p>
+
+	</div>
+
+
+	<script type="text/javascript" src="js/modernizr.js"></script>
+	<script type="text/javascript" src="js/eventShim.js"></script>
+	<script type="text/javascript" src="js/image-reveal.js"></script>
+
+	<!-- <script type="text/javascript" src="js/scripts.min.js"></script> -->
+
+	<script language="javascript" type="text/javascript">
+
+		window.onload = function() {
+			var slider = new RevealSlider({
+				// ID of the divs that contains the before & after images
+				'after-container': 'after',
+				'before-container': 'before',
+				// Ratio of the images, this is crucial ~ ex: 4/3 or 19/9
+				'ratio': '16/9',
+				// ID of the element to attach drag events
+				'slider-element': 'handle',
+				// Accepts any starting point in px or %
+				'start': '50%',
+				// ID of the slider container
+				'target': 'beyond-slider',
+			});
+		};
+
+	</script>
+
+</body>
+</html>

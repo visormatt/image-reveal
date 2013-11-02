@@ -1,0 +1,148 @@
+@primary-color: #FFFFFF;
+@background-color: #000000;
+@animation-time: .3s;
+
+/*******************************************************
+ * Some general layout...
+ *******************************************************/
+html {
+	background-color: #333333;
+	color: #FFFFFF;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: normal;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.container {
+	margin: auto;
+	padding: 40px;
+	max-width: 1000px;
+}
+
+// Hardware acceleration when available
+.transform() {
+	-o-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+/* Animate a property via CSS transitions */
+.transition(@property: opacity, @time: @animation-time, @ease: ease-out) {
+	/* We keep this in here to enable hardware accelation on iOS */
+	.transform();
+
+	-o-transition: @property @time @ease;
+	-ms-transition: @property @time @ease;
+	-moz-transition: @property @time @ease;
+	-webkit-transition: @property @time @ease;
+	transition: @property @time @ease;
+}
+
+/*******************************************************
+ * Our show / hide slider element
+ *******************************************************/
+#beyond-slider {
+	// background: url('../img/after.png') top left no-repeat;
+	background-size: 100% 100%;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	&.css-animate #handle,
+	&.css-animate .overlay,
+	&.css-animate .before {
+		.transition(all, @animation-time, ease-out);
+	}
+
+	#handle {
+		background: url('../img/handle.png') top left no-repeat transparent;
+		background-size: 100% 100%;
+		// border: 1px solid @primary-color;
+		cursor: pointer;
+		display: block;
+		float: left;
+		height: 120px;
+		left: 50%;
+		margin: -60px 0 0 -60px;
+		position: relative;
+		position: absolute;
+		top: 50%;
+		width: 120px;
+		z-index: 100;
+
+		// Is the handle responsive as well?
+		&.responsive {
+			@percentage: 12%;
+
+			height: @percentage * 1.6;
+			margin-top: -(@percentage * 1.6) / 4;
+			margin-left: -(@percentage * .9) / 2;
+			width: @percentage * .9;
+		}
+
+		a,
+		.block {
+			background: url("../img/transparent.png");
+			cursor: pointer;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	.img {
+		.transform();
+
+		overflow: hidden;
+		position: absolute;
+		z-index: 1;
+	}
+
+	// Before is what we hide the overflow on creating the reveal effect
+	.before {
+		background-color: @background-color;
+		border-right: 1px solid @primary-color;
+		width: 50%;
+		z-index: 100;
+
+		img {
+			opacity: 0.5;
+		}
+	}
+
+	.after {
+		height: 100%;
+		width: 100%;
+
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.overlay {
+		left: 0;
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		z-index: 100;
+	}
+}
+
+// Currently using modernizer for feature detection i.e. the .opacity class on the body
+.opacity #beyond-slider {
+	.overlay {
+		background-color: @background-color;
+	}
+}

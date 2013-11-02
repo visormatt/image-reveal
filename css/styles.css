@@ -1,0 +1,120 @@
+/*******************************************************
+ * Some general layout...
+ *******************************************************/
+html {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: auto;
+  padding: 40px;
+  max-width: 1000px;
+}
+/* Animate a property via CSS transitions */
+/*******************************************************
+ * Our show / hide slider element
+ *******************************************************/
+#beyond-slider {
+  background-size: 100% 100%;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+#beyond-slider.css-animate #handle,
+#beyond-slider.css-animate .overlay,
+#beyond-slider.css-animate .before {
+  /* We keep this in here to enable hardware accelation on iOS */
+
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+#beyond-slider #handle {
+  background: url('../img/handle.png') top left no-repeat transparent;
+  background-size: 100% 100%;
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 120px;
+  left: 50%;
+  margin: -60px 0 0 -60px;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  width: 120px;
+  z-index: 100;
+}
+#beyond-slider #handle.responsive {
+  height: 19.200000000000003%;
+  margin-top: -4.800000000000001%;
+  margin-left: -5.4%;
+  width: 10.8%;
+}
+#beyond-slider #handle a,
+#beyond-slider #handle .block {
+  background: url("../img/transparent.png");
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#beyond-slider .img {
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+#beyond-slider .before {
+  background-color: #000000;
+  border-right: 1px solid #ffffff;
+  width: 50%;
+  z-index: 100;
+}
+#beyond-slider .before img {
+  opacity: 0.5;
+}
+#beyond-slider .after {
+  height: 100%;
+  width: 100%;
+}
+#beyond-slider .after img {
+  height: 100%;
+  width: 100%;
+}
+#beyond-slider .overlay {
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+.opacity #beyond-slider .overlay {
+  background-color: #000000;
+}
