@@ -20,7 +20,7 @@ RevealSlider.prototype = {
 	 */
 	transparencyRange: {
 		'min': .15,
-		'max': .85,
+		'max': .85
 	},
 
 	/**

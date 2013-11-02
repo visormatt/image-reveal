@@ -37,23 +37,16 @@
 	<script type="text/javascript" src="js/eventShim.js"></script>
 	<script type="text/javascript" src="js/image-reveal.js"></script>
 
-	<!-- <script type="text/javascript" src="js/scripts.min.js"></script> -->
-
 	<script language="javascript" type="text/javascript">
 
 		window.onload = function() {
 			var slider = new RevealSlider({
-				// ID of the divs that contains the before & after images
-				'after-container': 'after',
-				'before-container': 'before',
-				// Ratio of the images, this is crucial ~ ex: 4/3 or 19/9
-				'ratio': '16/9',
-				// ID of the element to attach drag events
-				'slider-element': 'handle',
-				// Accepts any starting point in px or %
-				'start': '50%',
-				// ID of the slider container
-				'target': 'beyond-slider',
+				'after-container': 'after',		// ID of the after container
+				'before-container': 'before',	// ID of the before containers
+				'ratio': '16/9',				// Ratio of the images ~ ex: 4/3 or 19/9
+				'slider-element': 'handle',		// ID of the element to attach drag events
+				'start': '50%',					// Accepts any starting point in px or %
+				'target': 'beyond-slider',		// ID of the slider container
 			});
 		};
 
