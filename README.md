@@ -1,6 +1,6 @@
 # [Javascript Hide & Reveal](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal)
 
-A responsive before and after image slider.
+[DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
 
 *** Note: None of this is updated or properly tested yet.... I am working on it though :)
 
