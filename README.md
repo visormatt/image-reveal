@@ -4,9 +4,11 @@
 
 *** Note: None of this is updated or properly tested yet.... I am working on it though :)
 
+
 ## Plugins Used
 * [Modernizr](http://modernizr.com/): is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 * [EventShim](https://github.com/jwmcpeak/EventShim): EventShim adds support for addEventListener(), removeEventListener(), and standard Event object properties to IE8's event model.
+
 
 ## Browser and Device Support
 
@@ -22,6 +24,7 @@
 
 ##### Mobile Devices
 * iOS 6.0+
+
 
 ## Example Setup
 

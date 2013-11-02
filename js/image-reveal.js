@@ -10,7 +10,7 @@ var RevealSlider = function(params) {
 	this.config = params;
 
 	// Kick it off
-	this.init(params);
+	this.init();
 }
 
 RevealSlider.prototype = {
@@ -110,7 +110,9 @@ RevealSlider.prototype = {
 	},
 
 	/**
-	 * We manipulate the image opacity or a colored overlay.
+	 * We manipulate the image opacity or a colored overlay, this methods takes into account a max / min range
+	 *
+	 * @param {Interger} percentage ~ The 0 - 100% opacity level
 	 */
 	_setOpacity: function(percentage) {
 		var me = this,
@@ -128,6 +130,8 @@ RevealSlider.prototype = {
 
 	/**
 	 * Update our stage dimensions: This method basically makes this responsive
+	 *
+	 * @param {Event} e ~ Window Resize event
 	 */
 	_setStage: function(e) {
 		var me = this,
@@ -150,6 +154,9 @@ RevealSlider.prototype = {
 	/**
 	 * As we drag we need to hide or reveal the image
 	 * We work with percentages to make the reveal stay in position as well images fade in / out as well
+	 *
+	 * @param {Event} e ~ event object passed in
+	 * @param {Boolean} animate ~ Animate should only be passed in when fired by the click event
 	 */
 	_dragEvent: function(e, animate) {
 		var me = this,
@@ -215,6 +222,8 @@ RevealSlider.prototype = {
 
 	/**
 	 * This browser doesn't support CSS transistions so we use a timer
+	 *
+	 * @param {Interger} value ~ Our ending amount
 	 */
 	animationTimer: function(value) {
 		var me = this,
