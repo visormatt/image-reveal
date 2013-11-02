@@ -1,4 +1,4 @@
-# [Javascript Hide & Reveal](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal)
+# [Javascript Hide & Reveal](http://visormatt.github.io/image-reveal/)
 
 [DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
 
