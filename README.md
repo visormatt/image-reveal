@@ -2,8 +2,6 @@
 
 [DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
 
-*** Note: None of this is updated or properly tested yet.... I am working on it though :)
-
 
 ## Plugins Used
 * [Modernizr](http://modernizr.com/): is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
@@ -11,6 +9,7 @@
 
 
 ## Browser and Device Support
+*** Note: This testing is in progress.... I am working on it though :)
 
 ##### Desktop Browsers
 * Internet Explorer 8/9/10
