@@ -145,7 +145,7 @@ RevealSlider.prototype = {
 			me.slider.element.style.height = newHeight + 'px';
 
 			// We must set these values here to get the appear effect
-			me.before.element.style.height = newHeight + 'px';
+			// me.before.element.style.height = newHeight + 'px';
 			me.before.image.height = Math.floor(newHeight);
 			me.after.image.height = Math.floor(newHeight);
 		}
