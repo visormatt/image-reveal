@@ -22,3 +22,6 @@
 
 ##### Mobile Devices
 * iOS 6.0+
+
+## Additional Notes
+
