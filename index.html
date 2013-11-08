@@ -35,28 +35,28 @@
 <a name="javascript-hide--reveal" class="anchor" href="#javascript-hide--reveal"><span class="octicon octicon-link"></span></a><a href="http://visormatt.github.io/image-reveal/">Javascript Hide &amp; Reveal</a>
 </h1>
 
-<p><strong><em><a href="http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal">DEMO:</a></em></strong> A responsive before and after image slider.</p>
+<p><a href="http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal">DEMO:</a> A responsive before and after image slider.</p>
 
-<h2>
-<a name="plugins-used" class="anchor" href="#plugins-used"><span class="octicon octicon-link"></span></a>Plugins Used</h2>
+<h3>
+<a name="plugins-used" class="anchor" href="#plugins-used"><span class="octicon octicon-link"></span></a>Plugins Used</h3>
 
-<ul>
+<hr><ul>
 <li>
 <a href="http://modernizr.com/">Modernizr</a>: is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</li>
 <li>
 <a href="https://github.com/jwmcpeak/EventShim">EventShim</a>: EventShim adds support for addEventListener(), removeEventListener(), and standard Event object properties to IE8's event model.</li>
-</ul><h2>
-<a name="workflow-tools-used" class="anchor" href="#workflow-tools-used"><span class="octicon octicon-link"></span></a>Workflow Tools Used</h2>
+</ul><h3>
+<a name="workflow-tools-used" class="anchor" href="#workflow-tools-used"><span class="octicon octicon-link"></span></a>Workflow Tools Used</h3>
 
-<ul>
+<hr><ul>
 <li>
 <a href="http://gruntjs.com/">Gruntjs</a>: In one word: automation.</li>
 <li>
 <a href="http://lesscss.org/">LESS</a>: LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions.</li>
-</ul><h2>
-<a name="browser-and-device-support" class="anchor" href="#browser-and-device-support"><span class="octicon octicon-link"></span></a>Browser and Device Support</h2>
+</ul><h3>
+<a name="browser-and-device-support" class="anchor" href="#browser-and-device-support"><span class="octicon octicon-link"></span></a>Browser and Device Support</h3>
 
-<p>*** Note: This testing is in progress.... I am working on it though :)</p>
+<hr><p>*** Note: This testing is in progress.... I am working on it though :)</p>
 
 <pre><code>Desktop Browsers
 * Internet Explorer 8/9/10
@@ -67,20 +67,17 @@
 Tablet Devices
 * iPad 2/3/Mini
 * iOS 6.0+
-
-Mobile Devices
-* iOS 6.0+
 </code></pre>
 
-<h2>
-<a name="example-setup" class="anchor" href="#example-setup"><span class="octicon octicon-link"></span></a>Example Setup</h2>
+<h3>
+<a name="example-setup" class="anchor" href="#example-setup"><span class="octicon octicon-link"></span></a>Example Setup</h3>
 
-<ol>
+<hr><ol>
 <li>
 <p>Include the script tag and style tags</p>
 
 <pre><code>&lt;link href="css/styles.css" rel="stylesheet"&gt;
-&lt;script type="text/javascript" src="js/scripts.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/image-reveal.js"&gt;&lt;/script&gt;
 </code></pre>
 </li>
 <li>
@@ -101,7 +98,7 @@ Mobile Devices
 
     &lt;!-- This is the handle that does it --&gt;
     &lt;div id="handle" class="responsive"&gt;
-        &lt;a href="#" title="Drag Me!"&gt;&lt;/a&gt;
+        &lt;a href="#" alt="asd" title="dar"&gt;&lt;/a&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -123,10 +120,57 @@ Mobile Devices
 &lt;/script&gt;
 </code></pre>
 </li>
-</ol><h2>
-<a name="additional-notes" class="anchor" href="#additional-notes"><span class="octicon octicon-link"></span></a>Additional Notes</h2>
+</ol><h3>
+<a name="local-development-steps--tools" class="anchor" href="#local-development-steps--tools"><span class="octicon octicon-link"></span></a>Local Development Steps &amp; Tools</h3>
 
-<p>The only real limitation is that we require a fixed ratio the entire time...</p>
+<hr><h5>
+<a name="first-time-installation" class="anchor" href="#first-time-installation"><span class="octicon octicon-link"></span></a>First time installation</h5>
+
+<p>For the first time you can read the <a href="http://gruntjs.com/getting-started">Documenation</a> and then follow the steps below:</p>
+
+<ol>
+<li>
+<a href="http://nodejs.org/">Download</a> &amp; Install <a href="http://nodejs.org/">Nodejs</a>
+</li>
+<li>Install <a href="http://gruntjs.com/">Gruntjs</a> by following the steps below.</li>
+<li>Open terminal and CD into the directory containing this README.md 
+
+<ul>
+<li>sudo npm install -g grunt-cli</li>
+</ul>
+</li>
+<li>Install Project Plugins
+
+<ul>
+<li>sudo npm install</li>
+</ul>
+</li>
+<li>Run
+
+<ul>
+<li>grunt</li>
+</ul>
+</li>
+</ol><p>Now you should see a few things run and <strong><em>"Done, without errors."</em></strong></p>
+
+<h5>
+<a name="local-development" class="anchor" href="#local-development"><span class="octicon octicon-link"></span></a>Local Development</h5>
+
+<p>From here on out, just cd CD into the directory containing this README.md and run the following command:</p>
+
+<ol>
+<li>Watch
+
+<ul>
+<li>grunt watch</li>
+</ul>
+</li>
+</ol><p>We have setup tasks for javascript validation using <a href="https://github.com/gruntjs/grunt-contrib-jshint">Grunt JShint</a>, script concatination via <a href="https://github.com/gruntjs/grunt-contrib-uglify">Grunt Uglify</a> and less compilation using <a href="https://github.com/gruntjs/grunt-contrib-less">Grunt Less</a>. Running the command above monitors the appropriate folders using <a href="https://github.com/gruntjs/grunt-contrib-watch">Grunt Watch</a> and runs tasks as a watched document is updated. All of these packages are installed in the first time installation steps.</p>
+
+<h3>
+<a name="additional-notes" class="anchor" href="#additional-notes"><span class="octicon octicon-link"></span></a>Additional Notes</h3>
+
+<hr><p>The only real limitation is that we require a fixed ratio the entire time... </p>
         </section>
 
         <footer>
