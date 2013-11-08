@@ -1,3 +1,4 @@
+
 /*******************************************************
  * Some general layout...
  *******************************************************/
@@ -94,9 +95,6 @@ html h6 {
   border-right: 1px solid #ffffff;
   width: 50%;
   z-index: 100;
-}
-#beyond-slider .before img {
-  opacity: 0.5;
 }
 #beyond-slider .after {
   height: 100%;

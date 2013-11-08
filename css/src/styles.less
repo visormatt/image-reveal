@@ -1,6 +1,9 @@
-@primary-color: #FFFFFF;
-@background-color: #000000;
-@animation-time: .3s;
+@import 'import_example.less';
+
+// Imported above for Gruntjs demo purposes...
+// @primary-color: #FFFFFF;
+// @background-color: #000000;
+// @animation-time: .3s;
 
 /*******************************************************
  * Some general layout...
@@ -47,7 +50,6 @@ html {
  * Our show / hide slider element
  *******************************************************/
 #beyond-slider {
-	// background: url('../img/after.png') top left no-repeat;
 	background-size: 100% 100%;
 	display: block;
 	height: auto;
@@ -114,10 +116,6 @@ html {
 		border-right: 1px solid @primary-color;
 		width: 50%;
 		z-index: 100;
-
-		img {
-			opacity: 0.5;
-		}
 	}
 
 	.after {

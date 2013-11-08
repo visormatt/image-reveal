@@ -1,23 +1,30 @@
 module.exports = function(grunt) {
 
+	var me = this,
+
+		// What tasks to run on our scripts
+		SCRIPT_SRC = [
+			// Any Plugins we may be dependent on first
+			'js/src/plugins/modernizr.js',
+			'js/src/plugins/eventShim.js',
+			'js/src/plugins/fastclick.js',
+			// 'js/src/plugins/jquery.ui.touch-punch.js',
+
+			// Now for our scripts
+			'js/src/*.js'
+		],
+
+		// What tasks to run on our scripts
+		SCRIPT_TASKS = [
+			'jshint',
+			'uglify'
+		];
+
 	/**
 	 * Project configuration.
 	 */
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-				compress: true,
-				mangle: true,
-				preserveComments: false,
-			},
-			build: {
-				src: ['js/modernizr.js', 'js/eventShim.js', 'js/image-reveal.js'],
-				dest: 'js/scripts.min.js'
-			}
-		},
 
 		/**
 		 * Watch our files for updates
@@ -25,7 +32,12 @@ module.exports = function(grunt) {
 		watch: {
 			gruntfile: {
 				files: 'Gruntfile.js',
-				tasks: ['jshint:gruntfile'],
+				tasks: ['jshint:gruntfile', 'jshint'],
+			},
+
+			less: {
+				files: ['css/src/*'],
+				tasks: ['less']
 			},
 
 			options: {
@@ -33,11 +45,8 @@ module.exports = function(grunt) {
 			},
 
 			scripts: {
-				files: ['js/*.js'],
-				tasks: ['jshint'],
-				// options: {
-				//  nospawn: true,
-				// },
+				files: SCRIPT_SRC,
+				tasks: SCRIPT_TASKS
 			},
 		},
 
@@ -47,25 +56,38 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				options: {
-					// paths: ["css"]
+					paths: ["css/src"]
 				},
 
 				files: {
-					"css/styles.css": "css/styles.less"
+					"css/styles.min.css": "css/src/*.less"
 				}
-			}
+			},
+
+			// production: {
+			// 	options: {
+			// 		paths: ["css/src"],
+			// 		paths: ["assets/css"],
+			// 		cleancss: true
+			// 	},
+			// 	files: {
+			// 		"css/styles.min.css": "css/src/*.less"
+			// 	}
+			// }
 		},
 
 		/**
 		 * Run this using :: grunt jshint
 		 */
 		jshint: {
-			// beforeconcat: ['js/image-reveal.js'],
-			// afterconcat: ['js/image-reveal.js'],
+			gruntfile: {
+				files: 'Gruntfile.js',
+			},
 
-			files: ['js/*.js'],
+			files: ['js/src/*.js'],
+
 			options: {
-				ignores: ['js/eventShim.js', 'js/modernizr.js', 'js/scripts.min.js'],
+				// ignores: ['js/plugins/*.js', 'js/scripts.min.js'],
 				// curly: true,
 				// eqeqeq: true,
 				// eqnull: true,
@@ -74,26 +96,53 @@ module.exports = function(grunt) {
 				// jQuery: true
 				// },
 			}
-		}
+		},
 
+		/**
+		 * Squash it down and optimize
+		 */
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+				beautify: true, // Nice formatting
+				compress: false,
+				mangle: false,
+				preserveComments: 'all',
+			},
+
+			my_target: {
+				files: {
+					'js/scripts.min.js': SCRIPT_SRC
+				}
+			}
+		}
 	});
 
 	/**
-	 * Load our plugins
+	 * Load our grunt plugins
 	 */
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	/**
 	 * Default task(s).
 	 */
-	grunt.registerTask('default', ['uglify']);
+	grunt.registerTask('default', SCRIPT_TASKS);
+
+	/**
+	 * Any custom tasks we might want
+	 *
+	 * run using: grunt <task>
+	 * ex: grunt production_ready_scripts
+	 */
+	grunt.registerTask('production_ready_scripts', SCRIPT_TASKS);
 
 	/**
 	 * On watch events configure jshint:all to only run on changed file
 	 */
-	grunt.event.on('watch', function(action, filepath) {
-		grunt.config('jshint.all.src', filepath);
-	});
+	// grunt.event.on('watch', function(action, filepath) {
+	// grunt.config('jshint.all.src', filepath);
+	// });
 };

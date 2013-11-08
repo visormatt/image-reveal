@@ -35,7 +35,7 @@
 1. Include the script tag and style tags
 
 		<link href="css/styles.css" rel="stylesheet">
-		<script type="text/javascript" src="js/image-reveal.js"></script>
+		<script type="text/javascript" src="js/scripts.min.js"></script>
 
 
 2. Add the markup
@@ -55,7 +55,7 @@
 
 			<!-- This is the handle that does it -->
 			<div id="handle" class="responsive">
-				<a href="#" alt="asd" title="dar"></a>
+				<a href="#" title="Drag Me!"></a>
 			</div>
 		</div>
 

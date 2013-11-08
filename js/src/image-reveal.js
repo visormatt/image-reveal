@@ -11,16 +11,22 @@ var RevealSlider = function(params) {
 
 	// Kick it off
 	this.init();
-}
+};
 
 RevealSlider.prototype = {
 
+	deviceConfig: {
+		isIE: false,
+		isMobile: false,
+		isSafari: false
+	},
+
 	/**
-	 * Never go full...
+	 * Never go fully to either end of opacity
 	 */
 	transparencyRange: {
-		'min': .15,
-		'max': .85
+		'min': 0.15,
+		'max': 0.85
 	},
 
 	/**
@@ -30,6 +36,9 @@ RevealSlider.prototype = {
 		var me = this,
 			before = document.getElementById(me.config['before-container']),
 			after = document.getElementById(me.config['after-container']);
+
+		// Get device / browser details
+		me.userConfiguration();
 
 		// Hold onto our slider
 		me.slider = {
@@ -57,6 +66,63 @@ RevealSlider.prototype = {
 
 		// Setup the stage once
 		me._setStage();
+
+		// Force a click on safari browsers
+		me.simulateClick(me.slider.handle);
+	},
+
+	/**
+	 * We need to know some general information about the users device. These properties control our touch vs. mouse event logic
+	 */
+	userConfiguration: function() {
+		var me = this;
+
+		// Check for mobile / touch events
+		if ('ontouchstart' in document.documentElement) {
+			me.deviceConfig.mobile = true;
+		}
+
+		// Check for safari as we need to initiate a click
+		if (navigator.userAgent.toLowerCase().indexOf('safari') !== -1) {
+			me.deviceConfig.isSafari = true;
+		}
+
+		// Check for IE
+		if (navigator.appName.indexOf("Internet Explorer") !== -1) {
+			var ieOld = (navigator.appVersion.indexOf("MSIE 9") !== -1) ? 9 : 8,
+				ieVersion = (navigator.appVersion.indexOf("MSIE 1") !== -1) ? 10 : ieOld;
+
+			me.deviceConfig.isIE = true;
+			me.deviceConfig.ieVersion = ieVersion;
+		}
+
+		/**
+		if (me.deviceConfig.mobile) {
+			window.addEventListener('load', function() {
+				FastClick.attach(document.body);
+			}, false);
+		}
+		*/
+	},
+
+	/**
+	 * We have to trigger the first click to ensure all content is fully in place, this was seen on Safari
+	 */
+	simulateClick: function(element) {
+		var me = this,
+			clickTarget = parseInt(me.slider.element.offsetLeft) + parseInt(me.slider.element.offsetWidth / 2);
+
+		if (!me.deviceConfig.isSafari) {
+			return;
+		}
+
+		if (document.dispatchEvent) { // W3C
+			var oEvent = document.createEvent("MouseEvents");
+			oEvent.initMouseEvent("click", true, true, window, 1, clickTarget, 1, clickTarget, 1, false, false, false, false, 0, element);
+			element.dispatchEvent(oEvent);
+		} else if (document.fireEvent) { // IE
+			element.fireEvent("onclick");
+		}
 	},
 
 	/**
@@ -70,19 +136,53 @@ RevealSlider.prototype = {
 			me._setStage(e);
 		}, false);
 
-		// 2. Touch events || or drag events
-		if ('ontouchstart' in document.documentElement) {
-			me.mobile = true;
-			me.slider.handle.addEventListener('drag', function(e) {
+		// 2a. Touch events || or drag events
+		if (me.deviceConfig.mobile) {
+			me.slider.handle.addEventListener('touchstart', function(e) {
+				e.preventDefault();
+				me.dragEnabled = true;
 				me._dragEvent(e);
 			}, false);
-		} else {
-			me.slider.handle.addEventListener('drag', function(e) {
-				me._dragEvent(e);
+
+			me.slider.handle.addEventListener('touchend', function(e) {
+				me.dragEnabled = false;
+			}, false);
+
+			document.body.addEventListener('touchmove', function(e) {
+				if (me.dragEnabled) {
+					me._dragEvent(e);
+				}
 			}, false);
 		}
 
-		// 3. Image click
+		// 2b. We are unable to use the drag event as it doesn't update coords on FF so we use mouse events
+		else {
+			me.slider.handle.addEventListener('mousedown', function(e) {
+				e.preventDefault();
+				me.dragEnabled = true;
+				me._dragEvent(e);
+			}, false);
+
+			// We attach the body if they scroll outside our element and then release
+			document.body.addEventListener('mouseup', function(e) {
+				me.dragEnabled = false;
+			}, false);
+
+			// We attach the body if they scroll off our browser window
+			window.addEventListener('mouseout', function(e) {
+				me.dragEnabled = false;
+			}, false);
+
+			document.body.addEventListener('mousemove', function(e) {
+				e.preventDefault();
+
+				if (me.dragEnabled) {
+					me._dragEvent(e);
+				}
+			}, false);
+		}
+
+		// 3. Slider Element clicked
 		me.slider.element.addEventListener('click', function(e) {
 			me._dragEvent(e, true);
 		}, false);
@@ -159,18 +259,18 @@ RevealSlider.prototype = {
 	 */
 	_dragEvent: function(e, animate) {
 		var me = this,
-			// currentX = (me.mobile) ? e.pageX : e.x,
-			// TODO :: Fix for Firefox browser
-			currentX = (e.x) ? e.x : e.clientX,
-
+			browserX = (e.x) ? e.x : e.clientX,
+			mobileX = (e.touches && e.touches[0].clientX !== 0) ? e.touches[0].clientX : e.pageX,
+			currentX = (me.deviceConfig.mobile) ? mobileX : browserX,
 			offsetLeft = me.slider.element.offsetLeft,
 			newWidth = currentX - offsetLeft,
 			maxWidth = offsetLeft + me.slider.element.offsetWidth,
 			singlePercent = me.slider.element.offsetWidth / 100,
 			percentWidth = Math.floor(newWidth / singlePercent),
-			end = percentWidth;
+			end = percentWidth,
+			ieOffset = (offsetLeft / singlePercent);
 
-		// We only use the CSS transistion when we click
+		// We only use the CSS transistion when we click to animate
 		if (animate) {
 			me.slider.element.setAttribute('class', 'css-animate');
 		} else {
@@ -181,9 +281,17 @@ RevealSlider.prototype = {
 		if (currentX !== 0) {
 			me._setOpacity(percentWidth);
 
+			// Lovely IE tweaks
+			if (me.deviceConfig.isIE) {
+				currentX += offsetLeft;
+				// if (currentX >= 0) {
+					// currentX += offsetLeft;
+				// }
+			}
+
 			// We are dragging within the bounds so we need to update
 			if (currentX >= offsetLeft && currentX <= maxWidth) {
-				end = percentWidth;
+				end = (me.deviceConfig.isIE) ? percentWidth + ieOffset : percentWidth;
 			}
 
 			// Now we are off to a side, fully hidden or revealed
@@ -210,10 +318,18 @@ RevealSlider.prototype = {
 					me.slider.handle.style.left = end + '%';
 					me._setOpacity(end);
 				}
-				// Timer fallback
+
+				// Timer fallback for browsers that don't support transitions
 				else {
-					console.log('We have to use a timeer to animate... IE8 is really, really slow here though...');
-					me.animationTimer(end);
+					if (me.deviceConfig.isIE && me.deviceConfig.ieVersion !== 8) {
+						me.animationTimer(Math.floor(end));
+					}
+
+					// IE8 can not process the updates quickly enough
+					else {
+						me.before.element.style.width = end + '%';
+						me.slider.handle.style.left = end + '%';
+					}
 				}
 			}
 		}
@@ -226,10 +342,11 @@ RevealSlider.prototype = {
 	 */
 	animationTimer: function(value) {
 		var me = this,
-			percent = parseInt(me.slider.handle.style.left),
+			percent = Math.floor(parseInt(me.slider.handle.style.left)),
+			currentPosition = percent,
 			forward = (percent < value) ? true : false,
-			delay = 4,
-			i = percent;
+			delay = 5,
+			i = currentPosition;
 
 		// Clear the timer in case the user click multiple times
 		clearInterval(me.timer);
@@ -244,8 +361,8 @@ RevealSlider.prototype = {
 			me.before.element.style.width = i + '%';
 			me.slider.handle.style.left = i + '%';
 
-			(forward) ? i += 1 : i -= 1;
+			var direction = (forward) ? i += 1 : i -= 1;
 
 		}, delay);
 	}
-}
+};
