@@ -3,18 +3,20 @@
 ***[DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal)*** A responsive before and after image slider.
 
 
-## Plugins Used
+### Plugins Used
+-------------------------------------------
 * [Modernizr](http://modernizr.com/): is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
 * [EventShim](https://github.com/jwmcpeak/EventShim): EventShim adds support for addEventListener(), removeEventListener(), and standard Event object properties to IE8's event model.
 
-## Workflow Tools Used
+### Workflow Tools Used
+-------------------------------------------
 * [Gruntjs](http://gruntjs.com/): In one word: automation.
 * [LESS](http://lesscss.org/): LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions.
 
 
-## Browser and Device Support
-*** Note: This testing is in progress.... I am working on it though :)
-
+### Browser and Device Support
+-------------------------------------------
+*** *Note: *** This testing is in progress.... I am working on it though :)
 
 	Desktop Browsers
 	* Internet Explorer 8/9/10
@@ -30,13 +32,12 @@
 	* iOS 6.0+
 
 
-## Example Setup
-
+### Example Setup
+-------------------------------------------
 1. Include the script tag and style tags
 
 		<link href="css/styles.css" rel="stylesheet">
 		<script type="text/javascript" src="js/scripts.min.js"></script>
-
 
 2. Add the markup
 
