@@ -32,10 +32,10 @@
 
         <section id="main_content">
           <h1>
-<a name="javascript-hide--reveal" class="anchor" href="#javascript-hide--reveal"><span class="octicon octicon-link"></span></a><a href="http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal">Javascript Hide &amp; Reveal</a>
+<a name="javascript-hide--reveal" class="anchor" href="#javascript-hide--reveal"><span class="octicon octicon-link"></span></a><a href="http://visormatt.github.io/image-reveal/">Javascript Hide &amp; Reveal</a>
 </h1>
 
-<p><a href="http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal">DEMO:</a> A responsive before and after image slider.</p>
+<p><strong><em><a href="http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal">DEMO:</a></em></strong> A responsive before and after image slider.</p>
 
 <h2>
 <a name="plugins-used" class="anchor" href="#plugins-used"><span class="octicon octicon-link"></span></a>Plugins Used</h2>
@@ -46,30 +46,33 @@
 <li>
 <a href="https://github.com/jwmcpeak/EventShim">EventShim</a>: EventShim adds support for addEventListener(), removeEventListener(), and standard Event object properties to IE8's event model.</li>
 </ul><h2>
+<a name="workflow-tools-used" class="anchor" href="#workflow-tools-used"><span class="octicon octicon-link"></span></a>Workflow Tools Used</h2>
+
+<ul>
+<li>
+<a href="http://gruntjs.com/">Gruntjs</a>: In one word: automation.</li>
+<li>
+<a href="http://lesscss.org/">LESS</a>: LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions.</li>
+</ul><h2>
 <a name="browser-and-device-support" class="anchor" href="#browser-and-device-support"><span class="octicon octicon-link"></span></a>Browser and Device Support</h2>
 
 <p>*** Note: This testing is in progress.... I am working on it though :)</p>
 
-<h5>
-<a name="desktop-browsers" class="anchor" href="#desktop-browsers"><span class="octicon octicon-link"></span></a>Desktop Browsers</h5>
+<pre><code>Desktop Browsers
+* Internet Explorer 8/9/10
+* Google Chrome vs. 21+
+* Apple Safari 5+
+* Mozilla Firefox vs 10+
 
-<ul>
-<li>Internet Explorer 8/9/10</li>
-<li>Google Chrome vs. 21+</li>
-<li>Apple Safari 5+</li>
-<li>Mozilla Firefox vs 10+</li>
-</ul><h5>
-<a name="tablet-devices" class="anchor" href="#tablet-devices"><span class="octicon octicon-link"></span></a>Tablet Devices</h5>
+Tablet Devices
+* iPad 2/3/Mini
+* iOS 6.0+
 
-<ul>
-<li>iPad 2/3/Mini</li>
-<li>iOS 6.0+</li>
-</ul><h5>
-<a name="mobile-devices" class="anchor" href="#mobile-devices"><span class="octicon octicon-link"></span></a>Mobile Devices</h5>
+Mobile Devices
+* iOS 6.0+
+</code></pre>
 
-<ul>
-<li>iOS 6.0+</li>
-</ul><h2>
+<h2>
 <a name="example-setup" class="anchor" href="#example-setup"><span class="octicon octicon-link"></span></a>Example Setup</h2>
 
 <ol>
@@ -77,7 +80,7 @@
 <p>Include the script tag and style tags</p>
 
 <pre><code>&lt;link href="css/styles.css" rel="stylesheet"&gt;
-&lt;script type="text/javascript" src="js/image-reveal.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="js/scripts.min.js"&gt;&lt;/script&gt;
 </code></pre>
 </li>
 <li>
@@ -98,7 +101,7 @@
 
     &lt;!-- This is the handle that does it --&gt;
     &lt;div id="handle" class="responsive"&gt;
-        &lt;a href="#" alt="asd" title="dar"&gt;&lt;/a&gt;
+        &lt;a href="#" title="Drag Me!"&gt;&lt;/a&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
