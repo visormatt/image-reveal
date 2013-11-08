@@ -7,11 +7,9 @@ module.exports = function(grunt) {
 			// Any Plugins we may be dependent on first
 			'js/src/plugins/modernizr.js',
 			'js/src/plugins/eventShim.js',
-			'js/src/plugins/fastclick.js',
-			// 'js/src/plugins/jquery.ui.touch-punch.js',
 
 			// Now for our scripts
-			'js/src/*.js'
+			'js/src/image-reveal.js'
 		],
 
 		// What tasks to run on our scripts
@@ -102,12 +100,25 @@ module.exports = function(grunt) {
 		 * Squash it down and optimize
 		 */
 		uglify: {
+			// production: {
+			// },
+
+			// development: {
+				// options: {
+					// banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+					// beautify: true, // Nice formatting
+					// compress: false,
+					// mangle: false
+					// preserveComments: 'all',
+				// },
+			// },
+
 			options: {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-				beautify: true, // Nice formatting
-				compress: false,
-				mangle: false,
-				preserveComments: 'all',
+				beautify: false, // Nice formatting
+				compress: true,
+				mangle: true,
+				preserveComments: 'none',
 			},
 
 			my_target: {
@@ -130,6 +141,7 @@ module.exports = function(grunt) {
 	 * Default task(s).
 	 */
 	grunt.registerTask('default', SCRIPT_TASKS);
+	grunt.registerTask('production', ['jshint', 'uglify']);
 
 	/**
 	 * Any custom tasks we might want

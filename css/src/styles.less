@@ -11,6 +11,13 @@
 html {
 	background-color: #333333;
 	color: #FFFFFF;
+	height: 100%;
+	width: 100%;
+
+	body {
+		height: 100%;
+		width: 100%;
+	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: normal;
@@ -53,6 +60,7 @@ html {
 	background-size: 100% 100%;
 	display: block;
 	height: auto;
+	min-width: 350px;
 	overflow: hidden;
 	position: relative;
 	width: 100%;
@@ -64,9 +72,6 @@ html {
 	}
 
 	#handle {
-		background: url('../img/handle.png') top left no-repeat transparent;
-		background-size: 100% 100%;
-		// border: 1px solid @primary-color;
 		cursor: pointer;
 		display: block;
 		float: left;
@@ -77,7 +82,7 @@ html {
 		position: absolute;
 		top: 50%;
 		width: 120px;
-		z-index: 100;
+		z-index: 200;
 
 		// Is the handle responsive as well?
 		&.responsive {
@@ -98,6 +103,13 @@ html {
 			position: absolute;
 			top: 0;
 			width: 100%;
+
+			img {
+				border: none;
+				height: 100%;
+				outline: none;
+				width: 100%;
+			}
 		}
 	}
 
@@ -129,6 +141,7 @@ html {
 	}
 
 	.overlay {
+		background-color: #000000;
 		left: 0;
 		opacity: 0.5;
 		position: absolute;

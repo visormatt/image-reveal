@@ -35,7 +35,7 @@ if (ie !== 8) {
     // Goodbye
     return;
 } else {
-    console.error('DEVIL BROWSER....');
+    console.warn('You should really consider upgrading your browser and let the web evolve!');
 }
 
 // create an MS event object and get prototype

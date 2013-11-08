@@ -5,6 +5,12 @@
 html {
   background-color: #333333;
   color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+}
+html body {
+  height: 100%;
+  width: 100%;
 }
 html h1,
 html h2,
@@ -29,6 +35,7 @@ html h6 {
   background-size: 100% 100%;
   display: block;
   height: auto;
+  min-width: 350px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -49,8 +56,6 @@ html h6 {
   transition: all 0.3s ease-out;
 }
 #beyond-slider #handle {
-  background: url('../img/handle.png') top left no-repeat transparent;
-  background-size: 100% 100%;
   cursor: pointer;
   display: block;
   float: left;
@@ -61,7 +66,7 @@ html h6 {
   position: absolute;
   top: 50%;
   width: 120px;
-  z-index: 100;
+  z-index: 200;
 }
 #beyond-slider #handle.responsive {
   height: 19.200000000000003%;
@@ -77,6 +82,13 @@ html h6 {
   left: 0;
   position: absolute;
   top: 0;
+  width: 100%;
+}
+#beyond-slider #handle a img,
+#beyond-slider #handle .block img {
+  border: none;
+  height: 100%;
+  outline: none;
   width: 100%;
 }
 #beyond-slider .img {
@@ -105,6 +117,7 @@ html h6 {
   width: 100%;
 }
 #beyond-slider .overlay {
+  background-color: #000000;
   left: 0;
   opacity: 0.5;
   position: absolute;

@@ -14,6 +14,10 @@
 		<h1 id="test">Hide and Reveal</h1>
 
 		<div id="beyond-slider" class="" style="margin-top: 10px;">
+			<!-- This is used to maintain the correct state of drag -->
+			<div id="drag-target" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: transparent; z-index: 199;"></div>
+			<!-- <div id="drag-target" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: red; z-index: 199;"></div> -->
+
 			<!-- Before is what we hide the overflow on creating the reveal effect -->
 			<div id="before" class="img before" draggable="true">
 				<div id="before-overlay" class="overlay"></div>
@@ -28,7 +32,9 @@
 
 			<!-- This is the handle that does it -->
 			<div id="handle" class="responsive">
-				<a href="#" title="Drag Me!"></a>
+				<a href="#" title="Drag Me!">
+					<img src="img/handle.png">
+				</a>
 			</div>
 		</div>
 
@@ -47,7 +53,7 @@
 				'before-container': 'before',	// ID of the before containers
 				'ratio': '16/9',				// Ratio of the images ~ ex: 4/3 or 19/9
 				'slider-element': 'handle',		// ID of the element to attach drag events
-				'start': '50%',					// Accepts any starting point in px or %
+				'start': '50%',					// Accepts a percentage value where to start %
 				'target': 'beyond-slider',		// ID of the slider container
 			});
 		};

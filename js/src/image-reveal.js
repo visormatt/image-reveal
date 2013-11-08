@@ -95,14 +95,6 @@ RevealSlider.prototype = {
 			me.deviceConfig.isIE = true;
 			me.deviceConfig.ieVersion = ieVersion;
 		}
-
-		/**
-		if (me.deviceConfig.mobile) {
-			window.addEventListener('load', function() {
-				FastClick.attach(document.body);
-			}, false);
-		}
-		*/
 	},
 
 	/**
@@ -110,7 +102,7 @@ RevealSlider.prototype = {
 	 */
 	simulateClick: function(element) {
 		var me = this,
-			clickTarget = parseInt(me.slider.element.offsetLeft) + parseInt(me.slider.element.offsetWidth / 2);
+			clickTarget = parseInt(me.slider.element.offsetLeft) + parseInt( (me.slider.element.offsetWidth / 100) * parseInt(me.config.start) );
 
 		if (!me.deviceConfig.isSafari) {
 			return;
@@ -132,8 +124,8 @@ RevealSlider.prototype = {
 		var me = this;
 
 		// 1. Document resize, this adds the responsiveness
-		window.addEventListener('resize', function(e) {
-			me._setStage(e);
+		window.addEventListener('resize', function() {
+			me._setStage();
 		}, false);
 
 		// 2a. Touch events || or drag events
@@ -144,7 +136,7 @@ RevealSlider.prototype = {
 				me._dragEvent(e);
 			}, false);
 
-			me.slider.handle.addEventListener('touchend', function(e) {
+			me.slider.handle.addEventListener('touchend', function() {
 				me.dragEnabled = false;
 			}, false);
 
@@ -157,26 +149,30 @@ RevealSlider.prototype = {
 
 		// 2b. We are unable to use the drag event as it doesn't update coords on FF so we use mouse events
 		else {
+
+			// Has the user started the drag event, on our handle
 			me.slider.handle.addEventListener('mousedown', function(e) {
 				e.preventDefault();
-				me.dragEnabled = true;
 				me._dragEvent(e);
+				me.dragEnabled = true;
 			}, false);
 
 			// We attach the body if they scroll outside our element and then release
-			document.body.addEventListener('mouseup', function(e) {
+			document.body.addEventListener('mouseup', function() {
 				me.dragEnabled = false;
 			}, false);
 
 			// We attach the body if they scroll off our browser window
-			window.addEventListener('mouseout', function(e) {
-				me.dragEnabled = false;
+			document.addEventListener('mouseout', function(e) {
+				if (e.target.tagName.toLowerCase() === 'html') {
+					me.dragEnabled = false;
+				}
 			}, false);
 
+			// Lastly we listen for the cursor position if the mouse is still down
 			document.body.addEventListener('mousemove', function(e) {
-				e.preventDefault();
-
 				if (me.dragEnabled) {
+					e.preventDefault();
 					me._dragEvent(e);
 				}
 			}, false);
@@ -193,16 +189,15 @@ RevealSlider.prototype = {
 	 */
 	_setupRatio: function() {
 		var me = this,
-			currentWidth = me.slider.element.offsetWidth,
 			tmp = me.config.ratio.split('/'),
 			ratio = {
 				width: tmp[0],
 				height: tmp[1]
-			},
-			newHeight = (currentWidth * ratio.height) / ratio.width;
+			};
 
 		me.ratio = ratio;
 		me._setStage();
+		me._setOpacity( parseInt(me.config.start) );
 
 		// Position the slider element once
 		me.slider.handle.style.left = me.config.start || '50%';
@@ -224,18 +219,21 @@ RevealSlider.prototype = {
 			opacity = me.transparencyRange.max;
 		}
 
-		document.getElementById('after-overlay').style.opacity = opacity;
-		document.getElementById('before-overlay').style.opacity = Math.abs(opacity - 1);
+		// IE8 Opacity hack
+		if (me.deviceConfig.ieVersion === 8) {
+			document.getElementById('after-overlay').setAttribute('style', '-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + (opacity * 100) + ')";');
+			document.getElementById('before-overlay').setAttribute('style', '-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + Math.abs((opacity - 1) * 100) + ')";');
+		} else {
+			document.getElementById('after-overlay').style.opacity = opacity;
+			document.getElementById('before-overlay').style.opacity = Math.abs(opacity - 1);
+		}
 	},
 
 	/**
 	 * Update our stage dimensions: This method basically makes this responsive
-	 *
-	 * @param {Event} e ~ Window Resize event
 	 */
-	_setStage: function(e) {
+	_setStage: function() {
 		var me = this,
-			beforeWidth = me.before.image.offsetWidth,
 			currentWidth = me.slider.element.offsetWidth,
 			currentHeight = me.slider.element.offsetHeight,
 			newHeight = Math.floor((currentWidth * me.ratio.height) / me.ratio.width);
@@ -258,6 +256,8 @@ RevealSlider.prototype = {
 	 * @param {Boolean} animate ~ Animate should only be passed in when fired by the click event
 	 */
 	_dragEvent: function(e, animate) {
+		console.log('E TYPE: ', e.type);
+
 		var me = this,
 			browserX = (e.x) ? e.x : e.clientX,
 			mobileX = (e.touches && e.touches[0].clientX !== 0) ? e.touches[0].clientX : e.pageX,
@@ -269,6 +269,8 @@ RevealSlider.prototype = {
 			percentWidth = Math.floor(newWidth / singlePercent),
 			end = percentWidth,
 			ieOffset = (offsetLeft / singlePercent);
+
+		console.log('currentX :: ', currentX);
 
 		// We only use the CSS transistion when we click to animate
 		if (animate) {
@@ -284,9 +286,6 @@ RevealSlider.prototype = {
 			// Lovely IE tweaks
 			if (me.deviceConfig.isIE) {
 				currentX += offsetLeft;
-				// if (currentX >= 0) {
-					// currentX += offsetLeft;
-				// }
 			}
 
 			// We are dragging within the bounds so we need to update
@@ -338,7 +337,7 @@ RevealSlider.prototype = {
 	/**
 	 * This browser doesn't support CSS transistions so we use a timer
 	 *
-	 * @param {Interger} value ~ Our ending amount
+	 * @param {Interger} value ~ Our ending amount 0 - 100
 	 */
 	animationTimer: function(value) {
 		var me = this,
@@ -346,7 +345,8 @@ RevealSlider.prototype = {
 			currentPosition = percent,
 			forward = (percent < value) ? true : false,
 			delay = 5,
-			i = currentPosition;
+			i = currentPosition,
+			direction = null;
 
 		// Clear the timer in case the user click multiple times
 		clearInterval(me.timer);
@@ -360,8 +360,7 @@ RevealSlider.prototype = {
 			me._setOpacity(i);
 			me.before.element.style.width = i + '%';
 			me.slider.handle.style.left = i + '%';
-
-			var direction = (forward) ? i += 1 : i -= 1;
+			direction = (forward) ? i += 1 : i -= 1;
 
 		}, delay);
 	}

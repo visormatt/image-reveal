@@ -1,6 +1,6 @@
 # [Javascript Hide & Reveal](http://visormatt.github.io/image-reveal/)
 
-***[DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal)*** A responsive before and after image slider.
+[DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
 
 
 ### Plugins Used
@@ -16,7 +16,7 @@
 
 ### Browser and Device Support
 -------------------------------------------
-**** Note: This testing is in progress.... I am working on it though :)
+*** Note: This testing is in progress.... I am working on it though :)
 
 	Desktop Browsers
 	* Internet Explorer 8/9/10
@@ -28,16 +28,14 @@
 	* iPad 2/3/Mini
 	* iOS 6.0+
 
-	Mobile Devices
-	* iOS 6.0+
-
-
 ### Example Setup
 -------------------------------------------
+
 1. Include the script tag and style tags
 
 		<link href="css/styles.css" rel="stylesheet">
-		<script type="text/javascript" src="js/scripts.min.js"></script>
+		<script type="text/javascript" src="js/image-reveal.js"></script>
+
 
 2. Add the markup
 
@@ -56,7 +54,7 @@
 
 			<!-- This is the handle that does it -->
 			<div id="handle" class="responsive">
-				<a href="#" title="Drag Me!"></a>
+				<a href="#" alt="asd" title="dar"></a>
 			</div>
 		</div>
 
@@ -76,6 +74,32 @@
 		</script>
 
 
-## Additional Notes
-The only real limitation is that we require a fixed ratio the entire time...
+### Local Development Steps & Tools
+-------------------------------------------
 
+##### First time installation
+For the first time you can read the [Documenation](http://gruntjs.com/getting-started) and then follow the steps below:
+
+1. [Download](http://nodejs.org/) & Install [Nodejs](http://nodejs.org/)
+2. Install [Gruntjs](http://gruntjs.com/) by following the steps below.
+3. Open terminal and CD into the directory containing this README.md 
+	* sudo npm install -g grunt-cli
+4. Install Project Plugins
+	* sudo npm install
+5. Run
+	* grunt
+
+Now you should see a few things run and ***"Done, without errors."***
+
+##### Local Development
+From here on out, just cd CD into the directory containing this README.md and run the following command:
+
+1. Watch
+	* grunt watch
+
+We have setup tasks for javascript validation using [Grunt JShint](https://github.com/gruntjs/grunt-contrib-jshint), script concatination via [Grunt Uglify](https://github.com/gruntjs/grunt-contrib-uglify) and less compilation using [Grunt Less](https://github.com/gruntjs/grunt-contrib-less). Running the command above monitors the appropriate folders using [Grunt Watch](https://github.com/gruntjs/grunt-contrib-watch) and runs tasks as a watched document is updated. All of these packages are installed in the first time installation steps.
+
+
+### Additional Notes
+-------------------------------------------
+The only real limitation is that we require a fixed ratio the entire time... 
