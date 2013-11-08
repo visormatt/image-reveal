@@ -16,7 +16,7 @@
 
 ### Browser and Device Support
 -------------------------------------------
-*** *Note: *** This testing is in progress.... I am working on it though :)
+***Note: *** This testing is in progress.... I am working on it though :)
 
 	Desktop Browsers
 	* Internet Explorer 8/9/10
