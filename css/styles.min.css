@@ -31,7 +31,7 @@ html h6 {
 /*******************************************************
  * Our show / hide slider element
  *******************************************************/
-#beyond-slider {
+#custom-slider {
   background-size: 100% 100%;
   display: block;
   height: auto;
@@ -40,9 +40,9 @@ html h6 {
   position: relative;
   width: 100%;
 }
-#beyond-slider.css-animate #handle,
-#beyond-slider.css-animate .overlay,
-#beyond-slider.css-animate .before {
+#custom-slider.css-animate #handle,
+#custom-slider.css-animate .overlay,
+#custom-slider.css-animate .before {
   /* We keep this in here to enable hardware accelation on iOS */
   -o-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -55,7 +55,7 @@ html h6 {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-#beyond-slider #handle {
+#custom-slider #handle {
   cursor: pointer;
   display: block;
   float: left;
@@ -68,14 +68,14 @@ html h6 {
   width: 120px;
   z-index: 200;
 }
-#beyond-slider #handle.responsive {
+#custom-slider #handle.responsive {
   height: 19.200000000000003%;
   margin-top: -4.800000000000001%;
   margin-left: -5.4%;
   width: 10.8%;
 }
-#beyond-slider #handle a,
-#beyond-slider #handle .block {
+#custom-slider #handle a,
+#custom-slider #handle .block {
   background: url("../img/transparent.png");
   cursor: pointer;
   height: 100%;
@@ -84,14 +84,14 @@ html h6 {
   top: 0;
   width: 100%;
 }
-#beyond-slider #handle a img,
-#beyond-slider #handle .block img {
+#custom-slider #handle a img,
+#custom-slider #handle .block img {
   border: none;
   height: 100%;
   outline: none;
   width: 100%;
 }
-#beyond-slider .img {
+#custom-slider .img {
   -o-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
@@ -102,21 +102,21 @@ html h6 {
   position: absolute;
   z-index: 1;
 }
-#beyond-slider .before {
+#custom-slider .before {
   background-color: #000000;
   border-right: 1px solid #ffffff;
   width: 50%;
   z-index: 100;
 }
-#beyond-slider .after {
+#custom-slider .after {
   height: 100%;
   width: 100%;
 }
-#beyond-slider .after img {
+#custom-slider .after img {
   height: 100%;
   width: 100%;
 }
-#beyond-slider .overlay {
+#custom-slider .overlay {
   background-color: #000000;
   left: 0;
   opacity: 0.5;
@@ -126,6 +126,6 @@ html h6 {
   width: 100%;
   z-index: 100;
 }
-.opacity #beyond-slider .overlay {
+.opacity #custom-slider .overlay {
   background-color: #000000;
 }

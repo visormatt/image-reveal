@@ -39,7 +39,7 @@
 
 2. Add the markup
 
-		<div id="beyond-slider" class="" style="margin-top: 10px;">
+		<div id="custom-slider" class="" style="margin-top: 10px;">
 			<!-- Before is what we hide the overflow on creating the reveal effect -->
 			<div id="before" class="img before" draggable="true">
 				<div id="before-overlay" class="overlay"></div>
@@ -68,7 +68,7 @@
 					'ratio': '16/9',				// Ratio of the images ~ ex: 4/3 or 19/9
 					'slider-element': 'handle',		// ID of the element to attach drag events
 					'start': '50%',					// Accepts any starting point in px or %
-					'target': 'beyond-slider',		// ID of the slider container
+					'target': 'custom-slider',		// ID of the slider container
 				});
 			};
 		</script>
@@ -82,7 +82,7 @@ For the first time you can read the [Documenation](http://gruntjs.com/getting-st
 
 1. [Download](http://nodejs.org/) & Install [Nodejs](http://nodejs.org/)
 2. Install [Gruntjs](http://gruntjs.com/) by following the steps below.
-3. Open terminal and CD into the directory containing this README.md 
+3. Open terminal and CD into the directory containing this README.md
 	* sudo npm install -g grunt-cli
 4. Install Project Plugins
 	* sudo npm install
@@ -102,4 +102,4 @@ We have setup tasks for javascript validation using [Grunt JShint](https://githu
 
 ### Additional Notes
 -------------------------------------------
-The only real limitation is that we require a fixed ratio the entire time... 
+The only real limitation is that we require a fixed ratio the entire time...
