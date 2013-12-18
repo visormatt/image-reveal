@@ -39,7 +39,7 @@
 
 2. Add the markup
 
-		<div id="custom-slider" class="" style="margin-top: 10px;">
+		<div id="image-slider" class="" style="margin-top: 10px;">
 			<!-- Before is what we hide the overflow on creating the reveal effect -->
 			<div id="before" class="img before" draggable="false">
 				<div id="before-overlay" class="overlay"></div>
@@ -68,7 +68,7 @@
 					'ratio': '16/9',				// Ratio of the images ~ ex: 4/3 or 19/9
 					'slider-element': 'handle',		// ID of the element to attach drag events
 					'start': '50%',					// Accepts any starting point in px or %
-					'target': 'custom-slider',		// ID of the slider container
+					'target': 'image-slider',		// ID of the slider container
 				});
 			};
 		</script>
