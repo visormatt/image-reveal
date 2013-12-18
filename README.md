@@ -41,9 +41,9 @@
 
 		<div id="custom-slider" class="" style="margin-top: 10px;">
 			<!-- Before is what we hide the overflow on creating the reveal effect -->
-			<div id="before" class="img before" draggable="true">
+			<div id="before" class="img before" draggable="false">
 				<div id="before-overlay" class="overlay"></div>
-				<img src="img/before.png" draggable="true">
+				<img src="img/before.png" draggable="false">
 			</div>
 
 			<!-- After because IE doesn't support background size -->
@@ -54,7 +54,7 @@
 
 			<!-- This is the handle that does it -->
 			<div id="handle" class="responsive">
-				<a href="#" alt="asd" title="dar"></a>
+				<a href="#" alt="" title=""></a>
 			</div>
 		</div>
 

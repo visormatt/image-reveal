@@ -1,6 +1,6 @@
 {
   "name": "Hide_and_Reveal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A responsive before and after javascript image slider",
   "main": "GruntFile.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bynd.beanstalkapp.com:/sb-living-archive-games.git"
+    "url": "git@github.com:visormatt/image-reveal.git"
   },
   "keywords": [
     "javascript",
