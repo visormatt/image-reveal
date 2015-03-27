@@ -1,3 +1,6 @@
+language: javascript
+
 install: true
+
 git:
   submodules: false
