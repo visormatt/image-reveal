@@ -1,4 +1,6 @@
-language: javascript
+# language: javascript
+language: node_js
+  - "0.12"
 
 install: true
 
