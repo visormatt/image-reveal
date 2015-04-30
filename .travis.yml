@@ -19,11 +19,11 @@ node_js:
 
 # Install dependencies for the build
 before_script:
-  - 'grunt install'
+  - 'bower install'
 
 # Setting this overrides "npm test" which is the default
 script:
-  - 'grunt test'
+  - 'grunt production'
 
 # Anything after?
 after_script:
