@@ -19,6 +19,7 @@ node_js:
 
 # Install dependencies for the build
 before_script:
+  - 'npm install -g bower grunt-cli'
   - 'bower install'
 
 # Setting this overrides "npm test" which is the default
