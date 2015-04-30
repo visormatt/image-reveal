@@ -1,0 +1,10 @@
+# language: javascript
+language: node_js
+  - "0.12"
+
+install: true
+
+git:
+  submodules: false
+
+sudo: required

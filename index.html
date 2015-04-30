@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Hide &amp; Reveal</title>
-	<link href="css/styles.min.css" rel="stylesheet">
+	<link href="/css/styles.min.css" rel="stylesheet">
 
 	<!-- MOBILE SETTINGS -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -13,7 +13,7 @@
 	<div class="container">
 		<h1 id="test">Hide and Reveal</h1>
 
-		<div id="beyond-slider" class="" style="margin-top: 10px;">
+		<div id="image-slider" class="" style="margin-top: 10px;">
 			<!-- This is used to maintain the correct state of drag -->
 			<div id="drag-target" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: transparent; z-index: 199;"></div>
 			<!-- <div id="drag-target" style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: red; z-index: 199;"></div> -->
@@ -42,9 +42,9 @@
 
 	</div>
 
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- // <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 
-	<script type="text/javascript" src="js/scripts.min.js"></script>
+	<script type="text/javascript" src="/js/scripts.min.js"></script>
 	<script language="javascript" type="text/javascript">
 
 		window.onload = function() {
@@ -54,7 +54,7 @@
 				'ratio': '16/9',				// Ratio of the images ~ ex: 4/3 or 19/9
 				'slider-element': 'handle',		// ID of the element to attach drag events
 				'start': '50%',					// Accepts a percentage value where to start %
-				'target': 'beyond-slider',		// ID of the slider container
+				'target': 'image-slider',		// ID of the slider container
 			});
 		};
 
