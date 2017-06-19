@@ -1,7 +1,5 @@
 # [Javascript Hide & Reveal](http://visormatt.github.io/image-reveal/)
 
-[DEMO:](http://sandbox.visualmarvel.com/Javascript/Hide_and_Reveal) A responsive before and after image slider.
-
 [![Build Status][travis-image]][travis-url]
 
 <!-- Links used, not displayed in MD doc -->
